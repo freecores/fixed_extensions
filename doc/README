@@ -1,0 +1,103 @@
+------------------------------------------------------------------------------
+-- Title            : fixed_extensions (VHDL fixed-point arithmetic         --
+--                  : extensions package).                                  --
+-- Author           : Nikolaos Kavvadias                                    --
+-- Contact          : nikolaos.kavvadias@gmail.com                          --
+--                  : http://www.nkavvadias.com                             --
+-- Release Date     : 25 July 2011                                          --
+-- Version          : 0.0.5                                                 --
+--------------------:---------------------------------------------------------
+-- Revision history :                                                       --
+--           v0.0.5 : 2011-07-25                                            --
+--                  : Initial release.                                      --
+------------------------------------------------------------------------------
+
+
+1. INTRODUCTION
+---------------
+
+"fixed_extensions_pkg" is a fixed-point arithmetic package written in VHDL 
+according to the VHDL-2008 update of the standard. It uses VHDL-2008 back-
+compatible libraries (by David Bishop) that are included in this distribution 
+for the sake of completeness.
+
+Currently, the "fixed_extensions_pkg" package implements the following:
+
+  - ceil      : round towards plus infinity.
+  - fix       : round towards zero.
+  - floor     : round towards minus infinity.
+  - round     : round to nearest; ties to greatest absolute value.
+  - nearest   : round to nearest; ties to plus infinity.
+  - convergent: round to nearest; ties to closest even.
+  - bitinsert : bit-field insertion to word
+  - bitextract: bit-field extraction from word
+
+"fixed_extensions" is distributed along with a tool (gentestround) to generate 
+customized VHDL test designs.
+
+
+2. FILE LISTING
+---------------
+
+  The fixed_extensions distributions includes the following files:
+
+  /fixed_extensions-<version>
+    /bench/vhdl
+      testrounding_tb.vhd  Standard testbench file.  
+    /doc
+      AUTHORS              List of "fixed_extensions" authors.
+      BUGS                 Bug list.
+      ChangeLog            A log for code changes.
+      COPYING.BSD          The Modified BSD License.
+      README               This file.
+      THANKS               Acknowledgements.
+      TODO                 A list of future enhancements.
+    /gen/vhdl
+      testroundings.vhd    Auto-generated test file for sfixed arithmetic.
+      testroundingu.vhd    Auto-generated test file for ufixed arithmetic.
+    /rtl/vhdl
+      fixed_extensions_pkg_sim.vhd
+                           The VHDL package for simulation-oriented use.
+      fixed_extensions_pkg_synth.vhd
+                           The VHDL package for synthesis-oriented use.
+    /sim/rtl_sim/bin
+      run.sh               A bash script for testing the package.
+      testroundings.do     Modelsim macro script for testing sfixed arithmetic.
+      testroundings.sh     Bash script for running an sfixed simulation.
+      testroundingu.do     Modelsim macro script for testing ufixed arithmetic.
+      testroundingu.sh     Bash script for running an ufixed simulation.
+    /sim/rtl_sim/src
+      fixed_float_types_custom.vhd
+                           VHDL package with definitions for fixed-point arith.
+      fixed_pkg_c.vhd      VHDL package implementing fixed-point arithmetic.
+      math_real.vhd        VHDL package with some real arithmetic functions.    
+    /sw
+      gentestround.c       Test design generator written in ANSI C.
+      Makefile             Makefile for compiling the test design generator.
+
+
+3. FIXED_EXTENSIONS USAGE
+-------------------------
+
+  The fixed_extensions package can be used as follows:
+  $./run.sh
+
+
+4. PREREQUISITIES
+-----------------
+
+- Standard UNIX-based tools (tested on cygwin/x86)
+  make, bash
+- [optional] Mentor Modelsim ("mti") (http://www.mentor.com)
+  Provides a simulation environment to run the tests.
+
+
+5. CONTACT
+----------
+
+You may contact me for further questions/suggestions/corrections at:
+
+  Nikolaos Kavvadias <nkavv@physics.auth.gr>
+                     <nkavv@uop.gr>
+                     <nikolaos.kavvadias@gmail.com>
+  http://www.nkavvadias.com
